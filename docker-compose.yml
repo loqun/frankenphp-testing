@@ -1,0 +1,11 @@
+services:
+  app:
+    image: dunglas/frankenphp
+    environment:
+      - "FRANKENPHP_CONFIG=worker ./public/index.php"
+    ports:
+      - "9999:80"
+      - "9443:443"
+    volumes:
+      - .:/app
+      - ./Caddyfile:/etc/frankenphp/Caddyfile

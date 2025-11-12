@@ -1,0 +1,25 @@
+{
+    frankenphp
+    order mercure after encode
+    order vulcain after encode
+}
+
+localhost {
+    root * /app/public
+    mercure {
+        # Transport to use (default to Bolt)
+        transport_url local://mercure.db
+        # Publisher JWT key
+        publisher_jwt !ChangeThisMercureHubJWTSecretKey!
+        # Subscriber JWT key
+        subscriber_jwt !ChangeThisMercureHubJWTSecretKey!
+        # Allow anonymous subscribers (optional, default to false)
+        anonymous
+        # Enable the subscription API (optional, default to false)
+        subscriptions
+        # Extra directives
+    }
+    php_server {
+        worker /app/public/index.php
+    }
+}
